@@ -1,0 +1,14 @@
+<h1> Flats </h1>
+<h3> Boas vindas ao sistema de locação de apartamentos </h3>
+
+<h4> <%= link_to('Cadastrar imóvel', new_property_path) %> </h4>
+<% if @properties.empty? %>
+    Nenhuma propriedade disponível
+<% else %>
+    <% @properties.each do |property| %>
+        <%= link_to(property.title, property_path(property)) %> <br />
+        <%= property.description %> <br />
+        Quartos: <%= property.rooms %> <br />
+    <% end %>
+    <br />
+<% end %>

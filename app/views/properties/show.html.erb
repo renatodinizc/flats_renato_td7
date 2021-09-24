@@ -1,0 +1,21 @@
+<h2> <%= @property.title %> </h2>
+<p>
+<%= @property.description %> <br />
+Quartos: <%= @property.rooms %> <br />
+Banheiros: <%= @property.bathrooms %> <br />
+<% if @property.pet_friendly %>
+    Aceita pets
+<% else %>
+    Não aceita pets
+<% end %>
+<br />
+<% if @property.parking_spot %>
+    Tem estacionamento
+<% else %>
+    Não tem estacionamento
+<% end %>
+<br />
+Diária: <%= number_to_currency(@property.daily_rate, unit: 'R$', separator: ',', format: "%u %n") %>
+</p>
+
+<%= link_to('Voltar', root_path) %>
