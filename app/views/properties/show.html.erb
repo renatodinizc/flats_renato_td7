@@ -1,8 +1,13 @@
 <h2> <%= @property.title %> </h2>
 <p>
-<%= @property.description %> <br />
-Quartos: <%= @property.rooms %> <br />
-Banheiros: <%= @property.bathrooms %> <br />
+Tipo: <%= @property.property_type.name %> 
+<br />
+<%= @property.description %> 
+<br />
+Quartos: <%= @property.rooms %> 
+<br />
+Banheiros: <%= @property.bathrooms %> 
+<br />
 <% if @property.pet_friendly %>
     Aceita pets
 <% else %>

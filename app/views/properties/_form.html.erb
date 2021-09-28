@@ -25,6 +25,10 @@
     <%= property.errors.full_messages_for(:daily_rate)[0] %>
 </div>
 <div>
+    <%= f.label :property_type_id , 'Tipo' %>
+    <%= f.collection_select :property_type_id, PropertyType.all, :id, :name %>
+</div>
+<div>
     <%= f.label :parking_spot, 'Vaga de estacionamento' %>
     <%= f.check_box :parking_spot %>
 </div>
