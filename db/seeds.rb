@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Property.create!(title: 'Casa com quintal em Copacabana', 
+    description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
+    rooms: 3, 
+    bathrooms: 2,
+    parking_spot: true,
+    pet_friendly: true,
+    daily_rate: 400,
+    property_type: PropertyType.create!)
+Property.create!(title: 'Apartamento em Manaus', 
+    description: 'Ótimo preço, perto do Rio Negro', 
+    rooms: 2, 
+    bathrooms: 2,
+    parking_spot: false,
+    pet_friendly: true,
+    daily_rate: 150,
+    property_type: PropertyType.create!)

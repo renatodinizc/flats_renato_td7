@@ -1,0 +1,5 @@
+Imóveis do tipo: <%= @property_type.name %>
+
+<% @property_type.properties.each do |property| %>
+    <%= property.title %>
+<% end %>

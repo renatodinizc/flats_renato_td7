@@ -1,7 +1,19 @@
+<header>
 <h1> Flats </h1>
 <h3> Boas vindas ao sistema de locação de apartamentos </h3>
 
 <h4> <%= link_to('Cadastrar imóvel', new_property_path) %> </h4>
+</header>
+
+<aside>
+    <h4> Filtrar por tipo: </h4>
+    <% @property_types.each do |pt| %>
+        <%= link_to pt.name, property_type_path(pt) %>
+    <% end %>
+
+</aside>
+
+<section>
 <% if @properties.empty? %>
     Nenhuma propriedade disponível
 <% else %>
@@ -12,3 +24,4 @@
     <% end %>
     <br />
 <% end %>
+</section>
