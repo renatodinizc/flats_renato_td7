@@ -2,18 +2,20 @@ require 'rails_helper'
 
 describe 'Visitor register property' do
     it 'successfully' do
-        PropertyType.create!(name: 'Casa')
+        praia = PropertyRegion.create!(name: 'Praia')
+        casa = PropertyType.create!(name: 'Casa')
         
         visit root_path
         click_on 'Cadastrar imóvel'
         fill_in 'Título', with: 'Casa em Copacabana'
         fill_in 'Descrição', with: 'Imóvel em ótimas condições, a uma quadra da praia'
-        fill_in 'Quantidade de quartos', with: 2
-        fill_in 'Quantidade de banheiros', with: 2
-        fill_in 'Preço da diária', with: 300
+        fill_in 'Quartos', with: 2
+        fill_in 'Banheiros', with: 2
+        fill_in 'Diária', with: 300
         select 'Casa', from: 'Tipo'
-        check 'Vaga de estacionamento'
-        check 'Aceita pets'
+        select 'Praia', from: 'Região'
+        check 'Vaga de garagem'
+        check 'Animais de estimação'
         click_on 'Cadastrar'
 
         expect(page).to have_css('h2', text: 'Casa em Copacabana')
@@ -39,10 +41,10 @@ describe 'Visitor register property' do
         click_on 'Cadastrar imóvel'
         click_on 'Cadastrar'
 
-        expect(page).to have_content("Title can't be blank")
-        expect(page).to have_content("Description can't be blank")
-        expect(page).to have_content("Rooms can't be blank")
-        expect(page).to have_content("Bathrooms can't be blank")
-        expect(page).to have_content("Daily rate can't be blank")
+        expect(page).to have_content("Título não pode ficar em branco")
+        expect(page).to have_content("Descrição não pode ficar em branco")
+        expect(page).to have_content("Quartos não pode ficar em branco")
+        expect(page).to have_content("Banheiros não pode ficar em branco")
+        expect(page).to have_content("Diária não pode ficar em branco")
     end
 end

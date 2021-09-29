@@ -1,13 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 casa = PropertyType.create!(name: 'Casa')
 apartamento = PropertyType.create!(name: 'Apartamento')
 fazenda = PropertyType.create!(name: 'Fazenda')
+
+praia = PropertyRegion.create!(name: 'Praia')
+campo = PropertyRegion.create!(name: 'Campo')
+urbano = PropertyRegion.create!(name: 'Urbano')
 
 Property.create!(title: 'Casa com quintal em Copacabana', 
     description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
@@ -16,16 +13,18 @@ Property.create!(title: 'Casa com quintal em Copacabana',
     parking_spot: true,
     pet_friendly: true,
     daily_rate: 400,
-    property_type: casa)
+    property_type: casa,
+    property_region: praia)
 
 Property.create!(title: 'Propriedade em Belo Horizonte', 
-    description: 'Imóvel novo a beira-mar', 
+    description: 'Imóvel novo no centro', 
     rooms: 4, 
     bathrooms: 3,
     parking_spot: true,
     pet_friendly: true,
-    daily_rate: 800,
-    property_type: casa)
+    daily_rate: 530,
+    property_type: casa,
+    property_region: urbano)
 
 Property.create!(title: 'Apartamento em Manaus', 
     description: 'Ótimo preço, perto do Rio Negro', 
@@ -34,7 +33,8 @@ Property.create!(title: 'Apartamento em Manaus',
     parking_spot: false,
     pet_friendly: true,
     daily_rate: 150,
-    property_type: apartamento)
+    property_type: apartamento,
+    property_region: campo)
 
 Property.create!(title: 'Duplex em Jurerê Internacional', 
     description: 'Melhor local para festas', 
@@ -43,5 +43,5 @@ Property.create!(title: 'Duplex em Jurerê Internacional',
     parking_spot: true,
     pet_friendly: false,
     daily_rate: 980,
-    property_type: apartamento)
-
+    property_type: apartamento,
+    property_region: praia)

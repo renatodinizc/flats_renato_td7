@@ -9,8 +9,7 @@ class PropertiesController < ApplicationController
 
     def create
         @property = Property.new(params.require(:property).permit(:title, :description,
-             :rooms, :bathrooms, :daily_rate, :parking_spot, :pet_friendly, :property_type_id))
-        @property.save
+             :rooms, :bathrooms, :daily_rate, :parking_spot, :pet_friendly, :property_type_id, :property_region_id))
         if @property.save
             redirect_to property_path(@property)
         else
@@ -25,7 +24,7 @@ class PropertiesController < ApplicationController
     def update
         @property = Property.find(params[:id])
         if @property.update(params.require(:property).permit(:title, :description,
-            :rooms, :bathrooms, :daily_rate, :parking_spot, :pet_friendly, :property_type_id))
+            :rooms, :bathrooms, :daily_rate, :parking_spot, :pet_friendly, :property_type_id, :property_region_id))
             redirect_to property_path(@property)
         else
             render :edit

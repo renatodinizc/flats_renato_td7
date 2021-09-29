@@ -1,0 +1,12 @@
+<h1> Página de cadastro de regiões </h1>
+
+<%= form_with model: @property_region do |f| %>
+    <div>
+        <%= f.label :name, 'Região' %>
+        <%= f.text_field :name %>
+        <%= @property_region.errors.full_messages_for(:name)[0] %>
+    </div>
+    <div>
+        <%= f.submit 'Cadastrar' %>
+    </div>
+<% end %>

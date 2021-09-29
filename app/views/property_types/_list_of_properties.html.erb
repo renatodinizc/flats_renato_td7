@@ -1,9 +1,11 @@
 <% if properties.empty? %>
     Nenhuma propriedade disponível
 <% else %>
+    <h3> Imóveis disponíveis: </h3>
     <% properties.each do |property| %>
         <%= link_to(property.title, property_path(property)) %> <br />
         Tipo: <%= property.property_type.name %> <br />
+        Região: <%= property.property_region.name %> <br />
         <%= property.description %> <br />
         Quartos: <%= property.rooms %> <br />
         <br />

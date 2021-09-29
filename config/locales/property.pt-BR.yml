@@ -1,0 +1,28 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property: 'Propriedade'
+      property_type: 'Tipo de propriedade'
+      property_region: 'Região da propriedade'
+    attributes:
+      property:
+        title: 'Título'
+        description: 'Descrição'
+        rooms: 'Quartos'
+        bathrooms: 'Banheiros'
+        parking_spot: 'Vaga de garagem'
+        pet_friendly: 'Animais de estimação'
+        daily_rate: 'Diária'
+        property_region_id: 'Região'
+        property_type_id: 'Tipo'
+      property_type:
+          name: 'Tipo'
+      property_region:
+          name: 'Região'
+    properties:
+    buttons:
+      #back: 'Voltar'
+      #submit: 'Cadastrar'
+
+

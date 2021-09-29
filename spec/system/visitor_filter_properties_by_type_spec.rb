@@ -13,6 +13,7 @@ describe 'Visitor filter properties by type' do
         expect(page).to have_link('Sítio')
     end
     it 'successfully' do
+        praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
@@ -21,7 +22,9 @@ describe 'Visitor filter properties by type' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: casa)
+            property_type: casa,
+            property_region: praia)
+        campo = PropertyRegion.create!(name: 'Campo')
         apartamento = PropertyType.create!(name: 'Apartamento')
         Property.create!(title: 'Apartamento em Manaus', 
             description: 'Ótimo preço, perto do Rio Negro', 
@@ -30,7 +33,8 @@ describe 'Visitor filter properties by type' do
             parking_spot: false,
             pet_friendly: true,
             daily_rate: 150,
-            property_type: apartamento)
+            property_type: apartamento,
+            property_region: campo)
 
         visit root_path
         click_on 'Casa'

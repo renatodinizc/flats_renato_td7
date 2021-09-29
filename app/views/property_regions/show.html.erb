@@ -1,0 +1,5 @@
+<h2> Imóveis da região: <%= @property_region.name %> </h2>
+
+<%= render 'property_types/list_of_properties', properties: @property_region.properties %>
+
+<%= link_to 'Voltar para Página inicial', root_path %>

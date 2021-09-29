@@ -11,25 +11,27 @@
     <% @property_types.each do |pt| %>
         || <%= link_to pt.name, property_type_path(pt) %>
     <% end %>
-    ||
+    ||     
+    <br />
     </b>
     <br />
     <%= link_to 'Cadastrar novo tipo de imóvel', new_property_type_path %>
 
 </aside>
 
+<aside>
+    <h4> Filtrar por Região: </h4>
+    <b>
+    <% @property_regions.each do |pr| %>
+        || <%= link_to pr.name, property_region_path(pr) %>
+    <% end %>
+    ||
+    <br />
+    </b>
+    <br />
+    <%= link_to 'Cadastrar nova região de imóvel', new_property_region_path %>
+</aside>
+
 <section>
 <%= render 'property_types/list_of_properties', properties: @properties %>
-
-<!-- <% if @properties.empty? %>
-    Nenhuma propriedade disponível
-<% else %>
-    <% @properties.each do |property| %>
-        <%= link_to(property.title, property_path(property)) %> <br />
-        Tipo: <%= property.property_type.name %> <br />
-        <%= property.description %> <br />
-        Quartos: <%= property.rooms %> <br />
-        <br />
-    <% end %>
-<% end %> -->
 </section>

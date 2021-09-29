@@ -17,5 +17,18 @@ class PropertyTypesController < ApplicationController
         end
     end
 
+    def edit
+        @property_type = PropertyType.find(params[:id])
+    end
+
+    def update
+        @property_type = PropertyType.find(params[:id])
+        if @property_type.update(params.require(:property_type).permit(:name, :id))
+            redirect_to property_path(@property)
+        else
+            render :edit
+        end
+    end
+
 
 end

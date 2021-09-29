@@ -24,6 +24,17 @@ describe 'Visitor register new property type' do
         click_on 'Cadastrar novo tipo de imóvel'
         click_on 'Cadastrar'
 
-        expect(page).to have_content("Name can't be blank")
+        expect(page).to have_content("Tipo não pode ficar em branco")
+    end
+
+    it 'and cannot create repeatable names' do
+        PropertyType.create!(name: 'Casa')
+
+        visit root_path
+        click_on 'Cadastrar novo tipo de imóvel'
+        fill_in 'Tipo', with: 'Casa'
+        click_on 'Cadastrar'
+
+        expect(page).to have_content('Página de cadastro de novos tipos de imóveis')
     end
 end
