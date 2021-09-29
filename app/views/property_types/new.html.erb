@@ -1,0 +1,12 @@
+<h1> Página de cadastro de novos tipos de imóveis </h1>
+
+<%= form_with model: @property_type do |f| %>
+    <div>
+        <%= f.label :name, 'Tipo' %>
+        <%= f.text_field :name %>
+        <%= @property_type.errors.full_messages_for(:name)[0] %>
+    </div>
+    <div>
+        <%= f.submit 'Cadastrar' %>
+    </div>
+<% end %>

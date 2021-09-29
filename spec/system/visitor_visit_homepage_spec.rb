@@ -15,6 +15,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and sees all avaiable properties in database' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -22,7 +23,8 @@ describe 'Visitor visits homepage' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!)
+            property_type: casa)
+        apartamento = PropertyType.create!(name: 'Apartamento')
         Property.create!(title: 'Apartamento em Manaus', 
             description: 'Ótimo preço, perto do Rio Negro', 
             rooms: 2, 
@@ -30,7 +32,7 @@ describe 'Visitor visits homepage' do
             parking_spot: false,
             pet_friendly: true,
             daily_rate: 150,
-            property_type: PropertyType.create!)
+            property_type: apartamento)
 
         visit root_path
 
@@ -43,6 +45,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and view property details' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -50,7 +53,7 @@ describe 'Visitor visits homepage' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!)
+            property_type: casa)
 
             visit root_path
             click_on 'Casa com quintal em Copacabana'
@@ -65,6 +68,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and view details of multiple properties' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -72,7 +76,8 @@ describe 'Visitor visits homepage' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!)
+            property_type: casa)
+        apartamento = PropertyType.create!(name: 'Apartamento')
         Property.create!(title: 'Apartamento em Manaus', 
             description: 'Ótimo preço, perto do Rio Negro', 
             rooms: 2, 
@@ -80,7 +85,7 @@ describe 'Visitor visits homepage' do
             parking_spot: false,
             pet_friendly: true,
             daily_rate: 150,
-            property_type: PropertyType.create!)
+            property_type: apartamento)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'

@@ -1,5 +1,5 @@
-Imóveis do tipo: <%= @property_type.name %>
+<h2> Imóveis do tipo: <%= @property_type.name %> </h2>
 
-<% @property_type.properties.each do |property| %>
-    <%= property.title %>
-<% end %>
+<%= render 'list_of_properties', properties: @property_type.properties %>
+
+<%= link_to 'Voltar para Página inicial', root_path %>

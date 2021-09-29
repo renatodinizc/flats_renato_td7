@@ -7,21 +7,29 @@
 
 <aside>
     <h4> Filtrar por tipo: </h4>
+    <b>
     <% @property_types.each do |pt| %>
-        <%= link_to pt.name, property_type_path(pt) %>
+        || <%= link_to pt.name, property_type_path(pt) %>
     <% end %>
+    ||
+    </b>
+    <br />
+    <%= link_to 'Cadastrar novo tipo de imóvel', new_property_type_path %>
 
 </aside>
 
 <section>
-<% if @properties.empty? %>
+<%= render 'property_types/list_of_properties', properties: @properties %>
+
+<!-- <% if @properties.empty? %>
     Nenhuma propriedade disponível
 <% else %>
     <% @properties.each do |property| %>
         <%= link_to(property.title, property_path(property)) %> <br />
+        Tipo: <%= property.property_type.name %> <br />
         <%= property.description %> <br />
         Quartos: <%= property.rooms %> <br />
+        <br />
     <% end %>
-    <br />
-<% end %>
+<% end %> -->
 </section>

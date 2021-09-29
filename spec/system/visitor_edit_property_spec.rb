@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor edit property' do
     it 'successfully' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -9,7 +10,7 @@ describe 'Visitor edit property' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!)
+            property_type: casa)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'
@@ -33,6 +34,7 @@ describe 'Visitor edit property' do
     end
 
     it 'and try to left field empty unsuccessfuly' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -40,7 +42,7 @@ describe 'Visitor edit property' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!)
+            property_type: casa)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'

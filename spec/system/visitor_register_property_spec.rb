@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'Visitor register property' do
     it 'successfully' do
-
         PropertyType.create!(name: 'Casa')
+        
         visit root_path
         click_on 'Cadastrar imóvel'
         fill_in 'Título', with: 'Casa em Copacabana'

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Visitor filter properties by type' do 
-    it 'sould view links on nav bar successfuly' do
+    it 'should view links on nav bar successfuly' do
         PropertyType.create!(name: 'Apartamento')
         PropertyType.create!(name: 'Casa')
         PropertyType.create!(name: 'Sítio')
@@ -13,6 +13,7 @@ describe 'Visitor filter properties by type' do
         expect(page).to have_link('Sítio')
     end
     it 'successfully' do
+        casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -20,7 +21,8 @@ describe 'Visitor filter properties by type' do
             parking_spot: true,
             pet_friendly: true,
             daily_rate: 400,
-            property_type: PropertyType.create!(name: 'Casa'))
+            property_type: casa)
+        apartamento = PropertyType.create!(name: 'Apartamento')
         Property.create!(title: 'Apartamento em Manaus', 
             description: 'Ótimo preço, perto do Rio Negro', 
             rooms: 2, 
@@ -28,7 +30,7 @@ describe 'Visitor filter properties by type' do
             parking_spot: false,
             pet_friendly: true,
             daily_rate: 150,
-            property_type: PropertyType.create!(name: 'Apartamento'))
+            property_type: apartamento)
 
         visit root_path
         click_on 'Casa'
