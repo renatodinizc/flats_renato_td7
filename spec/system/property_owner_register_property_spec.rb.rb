@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-describe 'Visitor register property' do
+describe 'Property owner register property' do
     it 'successfully' do
         praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
+        login_as property_owner, scope: :property_owner
         
         visit root_path
         click_on 'Cadastrar imóvel'
@@ -29,6 +31,8 @@ describe 'Visitor register property' do
     end
 
     it 'and require it to have all fields successfully' do
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cadastrar imóvel'
         click_on 'Cadastrar'
@@ -37,6 +41,8 @@ describe 'Visitor register property' do
     end
 
     it 'and display alert message if there is any field empty' do
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
+        login_as property_owner, scope: :property_owner
         visit root_path
         click_on 'Cadastrar imóvel'
         click_on 'Cadastrar'

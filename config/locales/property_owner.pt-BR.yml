@@ -1,0 +1,13 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      property_owner: 'Proprietário'
+    attributes:
+      property_owner:
+        password: 'Senha'
+        remember_me: 'Lembrar minha senha'
+        password_confirmation: 'Confirmar senha'
+
+
+

@@ -1,10 +1,14 @@
 class PropertiesController < ApplicationController
+    before_action :authenticate_property_owner!, except: [:show, :edit, :update]
+
     def show
         @property = Property.find(params[:id])
     end
 
     def new
-        @property = Property.new
+        if user_signed_in?
+            @property = Property.new
+        end
     end
 
     def create
