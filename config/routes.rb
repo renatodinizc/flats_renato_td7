@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :property_owners
   root to: 'home#index'
+
+  devise_for :users, path: 'users'
+  devise_for :property_owners, path: 'property_owners'
 
   resources :properties do
     get 'my_properties', on: :collection
