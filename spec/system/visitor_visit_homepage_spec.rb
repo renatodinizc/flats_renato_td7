@@ -15,6 +15,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and sees all avaiable properties in database' do
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
         casa = PropertyType.create!(name: 'Casa')
         praia = PropertyRegion.create!(name: 'Praia')
         Property.create!(title: 'Casa com quintal em Copacabana', 
@@ -25,7 +26,8 @@ describe 'Visitor visits homepage' do
             pet_friendly: true,
             daily_rate: 400,
             property_type: casa,
-            property_region: praia)
+            property_region: praia,
+            property_owner: property_owner)
             
         apartamento = PropertyType.create!(name: 'Apartamento')
         campo = PropertyRegion.create!(name: 'Campo')
@@ -37,7 +39,8 @@ describe 'Visitor visits homepage' do
             pet_friendly: true,
             daily_rate: 150,
             property_type: apartamento,
-            property_region: campo)
+            property_region: campo,
+            property_owner: property_owner)
 
         visit root_path
 
@@ -50,6 +53,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and view property details' do
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
         praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
@@ -60,7 +64,8 @@ describe 'Visitor visits homepage' do
             pet_friendly: true,
             daily_rate: 400,
             property_type: casa,
-            property_region: praia)
+            property_region: praia,
+            property_owner: property_owner)
 
             visit root_path
             click_on 'Casa com quintal em Copacabana'
@@ -75,6 +80,7 @@ describe 'Visitor visits homepage' do
     end
 
     it 'and view details of multiple properties' do
+        property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
         praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
         Property.create!(title: 'Casa com quintal em Copacabana', 
@@ -85,7 +91,8 @@ describe 'Visitor visits homepage' do
             pet_friendly: true,
             daily_rate: 400,
             property_type: casa,
-            property_region: praia)
+            property_region: praia,
+            property_owner: property_owner)
         campo = PropertyRegion.create!(name: 'Campo')
         apartamento = PropertyType.create!(name: 'Apartamento')
         Property.create!(title: 'Apartamento em Manaus', 
@@ -96,7 +103,8 @@ describe 'Visitor visits homepage' do
             pet_friendly: true,
             daily_rate: 150,
             property_type: apartamento,
-            property_region: campo)
+            property_region: campo,
+            property_owner: property_owner)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'

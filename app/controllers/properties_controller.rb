@@ -1,19 +1,18 @@
 class PropertiesController < ApplicationController
-    before_action :authenticate_property_owner!, except: [:show, :edit, :update]
+    before_action :authenticate_property_owner!, only: [:new, :create, :edit, :update]
 
     def show
         @property = Property.find(params[:id])
     end
 
     def new
-        if user_signed_in?
-            @property = Property.new
-        end
+        @property = Property.new
     end
 
     def create
         @property = Property.new(params.require(:property).permit(:title, :description,
              :rooms, :bathrooms, :daily_rate, :parking_spot, :pet_friendly, :property_type_id, :property_region_id))
+        @property.property_owner = current_property_owner
         if @property.save
             redirect_to property_path(@property)
         else
@@ -33,5 +32,9 @@ class PropertiesController < ApplicationController
         else
             render :edit
         end
+    end
+
+    def my_properties
+        @properties = current_property_owner.properties
     end
 end

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
-describe 'Visitor edit property' do
+describe 'Property owner edit property' do
     it 'successfully' do
-        praia = PropertyRegion.create!(name: 'Praia')
         PropertyRegion.create!(name: 'Campo')
+        praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
+        jane = PropertyOwner.create!(email: 'jane@foo.com', password: '123456')
+        login_as jane, scope: :property_owner
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -13,7 +15,8 @@ describe 'Visitor edit property' do
             pet_friendly: true,
             daily_rate: 400,
             property_type: casa,
-            property_region: praia)
+            property_region: praia,
+            property_owner: jane)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'
@@ -36,11 +39,14 @@ describe 'Visitor edit property' do
         expect(page).to have_content('Não tem estacionamento')
         expect(page).to have_content('Não aceita pets')
         expect(page).to have_content('Diária: R$ 900,00')
+        expect(page).to have_content("Email do proprietário: #{jane.email}")
     end
 
     it 'and try to left field empty unsuccessfuly' do
         praia = PropertyRegion.create!(name: 'Praia')
         casa = PropertyType.create!(name: 'Casa')
+        jane = PropertyOwner.create!(email: 'jane@foo.com', password: '123456')
+        login_as jane, scope: :property_owner
         Property.create!(title: 'Casa com quintal em Copacabana', 
             description: 'Excelente casa, recém reformada com 2 vagas de garagem', 
             rooms: 3, 
@@ -49,7 +55,8 @@ describe 'Visitor edit property' do
             pet_friendly: true,
             daily_rate: 400,
             property_type: casa,
-            property_region: praia)
+            property_region: praia,
+            property_owner: jane)
 
         visit root_path
         click_on 'Casa com quintal em Copacabana'

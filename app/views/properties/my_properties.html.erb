@@ -1,0 +1,6 @@
+<%= render 'property_types/list_of_properties', properties: @properties %>
+<br />
+<br />
+<% if @properties.empty? %>
+    <%= link_to 'Cadastre seu primeiro imóvel aqui!', new_property_path %>
+<% end %>
