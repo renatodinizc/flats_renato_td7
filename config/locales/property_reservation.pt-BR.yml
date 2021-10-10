@@ -1,6 +1,15 @@
 ---
 pt-BR:
+  pending: 'Pendente'
+  accepted: 'Aceito'
+  rejected: 'Rejeitado'
   activerecord:
+    errors:
+      models:
+        property_reservation:
+          attributes:
+            end_date:
+              greater_than_start_date:
     models:
       property_reservation: 'Reserva'
     attributes:
@@ -9,4 +18,5 @@ pt-BR:
         end_date: 'Data de término'
         guests: 'Quantidade de pessoas'
         total_value: 'Valor total'
+
 

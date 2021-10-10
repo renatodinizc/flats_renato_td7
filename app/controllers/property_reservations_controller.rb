@@ -14,4 +14,10 @@ class PropertyReservationsController < ApplicationController
 
       redirect_to @property_reservation, notice: 'Pedido de reserva confirmado! (via flash)'
   end
+
+  def accept
+    @property_reservation = PropertyReservation.find(params[:id])
+    @property_reservation.accepted!
+    redirect_to @property_reservation.property
+  end
 end

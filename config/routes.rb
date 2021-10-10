@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :property_owners
 
+  get 'my_profile', to: 'users#my_profile'
+
   resources :properties do
-    resources :property_reservations, shallow: true
+    resources :property_reservations, shallow: true do
+      post 'accept', on: :member
+    end
   end
 
   resources :property_types, only: [:show, :new, :create, :edit, :update]
