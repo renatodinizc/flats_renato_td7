@@ -1,0 +1,35 @@
+resources :users do
+  resources :images
+end
+
+resources :posts do
+  resources :image
+end
+
+-----------
+
+
+concern :anything do
+  resources :image
+end
+
+resources :users, concerns: :anything
+resources :posts, concerns: :anything
+
+-----------
+concern :anything do
+  resources :image
+end
+
+concern :anything2 do
+  resources :video
+end
+
+resources :users, concerns: [:anything]
+resources :posts, concerns: [:anything, :anything2]
+
+---------
+
+resources :posts
+
+

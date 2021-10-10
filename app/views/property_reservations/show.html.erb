@@ -1,0 +1,10 @@
+<h1> Pedido de reserva enviado com sucesso! </h1>
+<h3> Reserva do imóvel <%= @property_reservation.property.title %> </h3>
+
+<p>
+Data de início: <%= l @property_reservation.start_date %>
+Data de término: <%= l @property_reservation.end_date %>
+Quantidade de pessoas: <%= @property_reservation.guests %>
+Valor total: <%= number_to_currency @property_reservation.total_value %>
+</p>
+

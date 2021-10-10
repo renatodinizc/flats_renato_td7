@@ -3,6 +3,8 @@ class PropertiesController < ApplicationController
 
     def show
         @property = Property.find(params[:id])
+        @property_reservation = PropertyReservation.new
+        #@property_reservations = PropertyReservation.where(property_id: @property)
     end
 
     def new

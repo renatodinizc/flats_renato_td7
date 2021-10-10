@@ -13,12 +13,23 @@
   <body>
   <nav>
     <% if property_owner_signed_in? %>
-      <p> <%= link_to 'Meus imóveis', my_properties_properties_path %>
+     <!-- <p> <%= link_to 'Meus imóveis', properties_path %> -->
       <p> <%= link_to 'Cadastrar imóvel', new_property_path %> </p>
       <p> <%= current_property_owner.email %> </p>
       <p> <%= link_to 'Logout', destroy_property_owner_session_path, method: :delete%>
+    <% elsif user_signed_in? %>
+        <p>
+        <%= current_user.email %>
+        <br />
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </p>
     <% else %>
-      <p> <%= link_to 'Entrar', new_property_owner_session_path %> </p>
+      <p>
+      <%= link_to 'Entrar como proprietário', new_property_owner_session_path %>
+      <br />
+      <br />
+      <%= link_to 'Entrar como locador', new_user_session_path %>
+      </p>
     <% end %>
   </nav>
   <p> <%= notice %> </p>
