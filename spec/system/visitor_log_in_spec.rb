@@ -6,7 +6,7 @@ describe 'Visitor log in' do
             property_owner = PropertyOwner.create!(email: 'foorbar@foo.com', password: '123456')
 
             visit root_path
-            click_on 'Entrar'
+            click_on 'Entrar como proprietário'
             fill_in 'Email', with: property_owner.email
             fill_in 'Senha', with: property_owner.password
             click_on 'Log in'
@@ -28,20 +28,6 @@ describe 'Visitor log in' do
             expect(page).not_to have_content(property_owner.email)
 
             
-        end
-
-        it 'create an account' do
-            visit root_path
-            click_on 'Entrar'
-            click_on 'Sign up'
-            fill_in 'Email', with: 'foobar@foo.com'
-            fill_in 'Senha', with: '1231234'
-            fill_in 'Confirmar senha', with: '1231234'
-            click_on 'Sign up'
-
-            expect(page).to have_content('foobar@foo.com')
-            expect(page).to have_content('Logout')
-            expect(page).not_to have_content('Entrar')
         end
 
         it 'and cant create property' do

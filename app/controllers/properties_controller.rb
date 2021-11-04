@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
         end
     end
 
-    def index
+    def my_properties
         @properties = current_property_owner.properties
     end
 end

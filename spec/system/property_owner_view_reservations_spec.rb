@@ -40,9 +40,9 @@ describe 'Property owner view reservations' do
                     property_type: fazenda,
                     property_region: campo,
                     property_owner: jane_owner)
-    PropertyReservation.create!(start_date: '20/10/2021', end_date: '25/10/2021',
+    PropertyReservation.create!(start_date: 5.days.from_now, end_date: 15.days.from_now,
                                 guests: 6, property: copacabana, user: user)
-    PropertyReservation.create!(start_date: '13/12/2021', end_date: '17/12/2021',
+    PropertyReservation.create!(start_date: 1.week.from_now, end_date: 3.weeks.from_now,
                                 guests: 3, property: sorocaba, user: user)
 
     login_as foobar, scope: :property_owner
@@ -53,10 +53,10 @@ describe 'Property owner view reservations' do
     expect(page).not_to have_content 'Reserve agora'
     expect(page).to have_content 'Propostas recebidas'
     expect(page).to have_content 'Proposta de user@flats.com'
-    expect(page).to have_content 'Data de início: 20/10/2021'
-    expect(page).to have_content 'Data de término: 25/10/2021'
+    expect(page).to have_content "Data de início: #{I18n.l 5.days.from_now.to_date}"
+    expect(page).to have_content "Data de término: #{I18n.l 15.days.from_now.to_date}"
     expect(page).to have_content 'Total de pessoas: 6'
-    expect(page).not_to have_content 'Data de início: 13/12/2021' 
+    expect(page).not_to have_content "Data de início: #{I18n.l 1.week.from_now.to_date}" 
     expect(page).to have_content 'Status: Pendente' 
   end
 
@@ -99,9 +99,9 @@ describe 'Property owner view reservations' do
                     property_type: fazenda,
                     property_region: campo,
                     property_owner: jane_owner)
-    PropertyReservation.create!(start_date: '20/10/2021', end_date: '25/10/2021',
+    PropertyReservation.create!(start_date: 4.weeks.from_now, end_date: 10.weeks.from_now,
                                 guests: 6, property: copacabana, user: user)
-    PropertyReservation.create!(start_date: '13/12/2021', end_date: '17/12/2021',
+    PropertyReservation.create!(start_date: 1.week.from_now, end_date: 2.weeks.from_now,
                                 guests: 3, property: sorocaba, user: user)
 
     login_as foobar, scope: :property_owner
@@ -113,8 +113,8 @@ describe 'Property owner view reservations' do
     expect(current_path).to eq property_path(copacabana)
     expect(current_path).to eq property_path(copacabana)
     expect(page).to have_content 'Proposta de user@flats.com'
-    expect(page).to have_content 'Data de início: 20/10/2021'
-    expect(page).to have_content 'Data de término: 25/10/2021'
+    expect(page).to have_content "Data de início: #{I18n.l 4.weeks.from_now.to_date}" 
+    expect(page).to have_content "Data de término: #{I18n.l 10.weeks.from_now.to_date}"
     expect(page).to have_content 'Total de pessoas: 6'
     expect(page).to have_content 'Status: Aceito' 
   end
